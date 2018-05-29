@@ -1,11 +1,10 @@
 
-Project Title: Build a Portfolio Site 
+Project Title: Cat Clicker 
 Version: v1
 Author Name: Sarah Hassan
-Date: 6/4/2018
 
 Project description:
-This project is for building a portfolio website for udacity FEND track second phase nano degree. It's design based on the mostly fluid pattern.
+ This project have list of cat names user click on cat name and cat image will be displayed in the display area and when use click on image Clicks Number increase.
 
 Code sources:
 	w3schools.com
@@ -15,12 +14,9 @@ Code sources:
 	internetingishard.com
 
 Image credits
-	panda card designed by Freepik
-	banner image designed by Newelement / Freepik
-	logo from udacity
+	<a href="http://www.freepik.com">Designed by Terdpongvector / Freepik</a>
 
-Font icon
-	fontawesome.com
+
 
 Font 
 	"Open Sans" from  fonts.google.com
