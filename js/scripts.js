@@ -14,9 +14,9 @@ const catWrapper = document.querySelector('.cat_wrapper');
 // set a default cat image and display its name
 document.querySelector('.cat_name').innerHTML = 'Dydo';
 const catImg = document.createElement('img');
-// catImg.setAttribute('class', 'cat_img');
+
 // catImg.setAttribute('src', 'images/dydo.png');
-// catImg.setAttribute('alt', 'cat image');
+
 
 // add img to display area
 catWrapper.appendChild(catImg);
@@ -37,7 +37,7 @@ for(let i = 0; i < cats.length; i++) {
     var liName = cats[i];
     var catCount = counters[i];
     //add eventlistener to every cat name == list item
-    li.addEventListener('click', function(cat, count) {
+    li.addEventListener('click', function(cat) {
         let countclicks = 0;
 
         return function() {
@@ -49,21 +49,24 @@ for(let i = 0; i < cats.length; i++) {
             imgSrc = `images/${catName}.png`;
             document.querySelector('.cat_name').innerHTML = cat;
             catImg.setAttribute('src', imgSrc);
+            catImg.setAttribute('class', 'cat_img');
+            catImg.setAttribute('alt', 'cat image');
+            catImg.setAttribute('id', i);
 
-            // countclicks = Number(clickNum);
-            // countclicks++;
-            // document.querySelector('.click_num').innerHTML = countclicks;
-            console.log(countclicks);
-
-            catImg.addEventListener('click', function() {
-                count++;
-                document.querySelector('.click_num').innerHTML = count;
-                console.log(count);
-            }); 
+            // console.log(countclicks);
+            let clickedArray = [];
+            catImg.addEventListener('click', function(e) {
+                
+                let clickedOneId = e.target.getAttribute('id');
+                // i = Number(clickedOneId);
+                counters[Number(clickedOneId)]++;
+                document.querySelector('.click_num').innerHTML = counters[i];
+                console.log(counters[i], counters, e.target);
+            });
             
         }
        
-    }(liName, catCount));
+    }(liName));
     
     
 };
