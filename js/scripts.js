@@ -3,7 +3,7 @@
  * variables
  *
  */
-// create array for cat names
+// create array for cat names and counters
 const cats = ['Dydo', 'Momo', 'Nano', 'Roro',  'Zazy'];
 const counters = [0, 0, 0, 0, 0];
 
@@ -12,11 +12,8 @@ const catList = document.getElementById('cat_list');
 const catWrapper = document.querySelector('.cat_wrapper');
 
 // set a default cat image and display its name
-document.querySelector('.cat_name').innerHTML = 'Dydo';
+document.querySelector('.cat_name').innerHTML = '';
 const catImg = document.createElement('img');
-
-// catImg.setAttribute('src', 'images/dydo.png');
-
 
 // add img to display area
 catWrapper.appendChild(catImg);
@@ -35,7 +32,6 @@ for(let i = 0; i < cats.length; i++) {
 
     // make copy of cat name to pass for closure
     var liName = cats[i];
-    var catCount = counters[i];
     //add eventlistener to every cat name == list item
     li.addEventListener('click', function(cat) {
         let countclicks = 0;
@@ -52,132 +48,23 @@ for(let i = 0; i < cats.length; i++) {
             catImg.setAttribute('class', 'cat_img');
             catImg.setAttribute('alt', 'cat image');
             catImg.setAttribute('id', i);
-
-            // console.log(countclicks);
-            let clickedArray = [];
-            catImg.addEventListener('click', function(e) {
-                
-                let clickedOneId = e.target.getAttribute('id');
-                // i = Number(clickedOneId);
-                counters[Number(clickedOneId)]++;
-                document.querySelector('.click_num').innerHTML = counters[i];
-                console.log(counters[i], counters, e.target);
-            });
-            
         }
        
     }(liName));
     
-    
 };
 
-// for(let i = 0; i < clicks.length; i++) {
 
-//     var countclicks = clicks[i];
-//     catImg.addEventListener('click', function(count) {
-//         return function() {
-//             count++;
-//             // document.querySelector('.click_num').innerHTML = countclicks;
-//             console.log(count);
-//         }
-            
-//     }(clicks[i])); 
-// }
-// catImg.addEventListener('click', function() {
-//     countclicks++;
-//     document.querySelector('.click_num').innerHTML = countclicks;
-//     console.log(countclicks);
-// }); 
-
-// catList.addEventListener('click', function(e) {
-//     if(e.target.nodeName.toLowerCase() === 'li'){
-//       console.log(e.target);
-//     }
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// for(let i = 0; i < cats.length; i++) {
-//     const input = document.createElement('input');
-//     input.setAttribute('type', 'radio');
-//     input.setAttribute('name', 'choice');
-
-//     const label = document.createElement('label');
-//     labelText = document.createTextNode(cats[i]);
-//     label.appendChild(labelText);
-
-//     catList.appendChild(input);
+// add eventlistener to cat image
+catImg.addEventListener('click', function(e) {
+    // get cat id and pass it to i to reflect cat counter for the clicked one
+    let clickedOneId = e.target.getAttribute('id');
+    let i = Number(clickedOneId);
     
-//     input.after(label);
-//     console.log(cats[i]);
-// };
+    // increase counter of the clicked cat
+    counters[i] +=1;
 
-
-//  const wrapper = document.querySelector('.wrapper');
-// const catImag = document.querySelector('.cat_img');
-
-// const firstCat = document.querySelector('#first_cat');
-// const firstCatName = 'Poplinre';
-// document.querySelector('.cat_name1').innerHTML = firstCatName;
-
-
-// const sectCat = document.querySelector('#sec_cat');
-// const sectCatName = 'Chewie';
-// document.querySelector('.cat_name2').innerHTML = sectCatName;
-
-// console.log(wrapper);
-
-// const clickNum1 = document.querySelector('.click_num1').innerHTML;
-// const clickNum2 = document.querySelector('.click_num2').innerHTML;
-
-// console.log(typeof(Number(clickNum1)));
-
-// let countclicks1 = Number(clickNum1);
-// let countclicks2 = Number(clickNum2);
-
-
-/*
- *
- *  Event Listeners
- *
- */
-
-// add click event listener to catImag
-// wrapper.addEventListener('click', function(e) {
-//     if(e.target.nodeName.toLowerCase() === 'img'){
-//         const targetImg = e.target;
-//         countclicks++;
-//         console.log(countclicks + e.target.nodeName);
-//         targetImg.innerHTML = countclicks;   
-//     }
-    
-// });
-
-// firstCat.addEventListener('click', function(e) {
-//         countclicks1++;
-//         console.log(countclicks1 + e.target.nodeName);
-//         document.querySelector('.click_num1').innerHTML = countclicks1;   
-// });
-
-// sectCat.addEventListener('click', function(e) {
-//     countclicks2++;
-//     console.log(countclicks2 + e.target.nodeName);
-//     document.querySelector('.click_num2').innerHTML = countclicks2;
-// });
+    // add counter number to DOM
+    document.querySelector('.click_num').innerHTML = counters[i];
+    console.log(counters[i], counters, e.target);
+});
